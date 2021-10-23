@@ -1,0 +1,17 @@
+﻿@model Product
+
+<h2>@Model.ProductName</h2>
+
+<div class="img-thumbnail">
+    <img src="@(" ~ /Images/"+Model.ImagePath)" asp-append-version="true" width="250px" height="250px">
+    <div class="carousel-caption">
+        <h3 class="pull-right">@Model.Price</h3>
+        <h3>
+            <a href="#">@Model.ProductName</a>
+        </h3>
+        <h4>@Model.ShortDesc</h4>
+        <p>@Model.LongDesc</p>
+
+    </div>
+</div>
+
