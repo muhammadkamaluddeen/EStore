@@ -12,33 +12,45 @@ namespace EStore.Controllers
     {
         private readonly IProduct _productRepo;
         private readonly ICategory _categoryRepo;
-
         public ShoppingController(IProduct productRepo, ICategory categoryRepo)
         {
             _productRepo = productRepo;
             _categoryRepo = categoryRepo;
         }
 
-        public ViewResult List()
+     
+        public ViewResult List(string category)
         {
-            var productListViewModel = new ProductListViewModel();
-            productListViewModel.Products = _productRepo.AllProducts;
+            IEnumerable<Product> products;
+            string currentCategory;
 
-            //foreach (var item in productListViewModel.Products)
-            //{
-            //    item.Category.CategoryName
-            //}
+            // List all 
+            if (string.IsNullOrEmpty(category))
+            {
+                products = _productRepo.AllProducts.OrderBy(p => p.ProductId);
+                currentCategory = "All products";
+            }
+            // List a product category
+            else
+            {
+                products = _productRepo.AllProducts.Where(p => p.Category.CategoryName == category)
+                    .OrderBy(p => p.ProductId);
+                currentCategory = _categoryRepo.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
 
-
-            return View(productListViewModel);
+            return View(new ProductListViewModel
+            {
+                Products = products,
+                CurrentCategory = currentCategory
+            });
         }
 
-        public IActionResult Detail(int id)
+        public IActionResult Details(int id)
         {
             var product = _productRepo.GetProductById(id);
-            if (product == null)
-                return NotFound();
+            if (product == null) return NotFound();
+
             return View(product);
-        }  
+        }
     }
 }

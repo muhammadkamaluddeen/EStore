@@ -1,0 +1,14 @@
+﻿@model ShoppingCartViewModel
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+<li style="align-content:center">
+    <a>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span id="cart-status">
+            @Model.ShoppingCart.ShoppingCartItems.Count
+        </span>
+    </a>
+</li>}

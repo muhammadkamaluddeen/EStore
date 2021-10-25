@@ -31,8 +31,10 @@ namespace EStore
             services.AddScoped<IProduct, ProductRepo>();
 
             services.AddScoped<ICategory, CategoryRepo>();
-
-       
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddScoped<IOrder, OrderRepo>();
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -54,7 +56,7 @@ namespace EStore
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
