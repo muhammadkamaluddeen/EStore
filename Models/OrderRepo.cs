@@ -31,7 +31,7 @@ namespace EStore.Models
                 var OrderDetail = new OrderDetail
                 {
                     Amount = shoppingCartItem.Amount,
-                    PieId = shoppingCartItem.Product.ProductId,
+                    ProductId = shoppingCartItem.Product.ProductId,
                     Price = shoppingCartItem.Product.Price
                 };
 

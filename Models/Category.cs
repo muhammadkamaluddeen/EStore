@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Xunit;
+using Xunit.Sdk;
 
 namespace EStore.Models
 {
@@ -12,7 +14,8 @@ namespace EStore.Models
         [DisplayName("Category Id")]
         public int CategoryId { get; set; }
         [DisplayName("Category Name")]
-        [Required]
+        [Required(ErrorMessage="Category Name cannot be empty!")]
+        
         public string CategoryName { get; set; }
  
         [Required]
