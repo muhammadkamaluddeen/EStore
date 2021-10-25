@@ -39,6 +39,10 @@ namespace EStore.Controllers
 
             if (selectedProduct != null)
             {
+
+                
+               //var b =  ShoppingCart.ShoppingCartId;
+
                 _shoppingCart.AddToCart(selectedProduct, 1);
             }
             return RedirectToAction("Index");
