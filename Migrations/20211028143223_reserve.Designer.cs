@@ -4,14 +4,16 @@ using EStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211028143223_reserve")]
+    partial class reserve
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,7 +249,7 @@ namespace EStore.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ReservationDetails");
+                    b.ToTable("ReservationDeatails");
                 });
 
             modelBuilder.Entity("EStore.Models.ShoppingCart", b =>

@@ -32,7 +32,9 @@ namespace EStore.Models
                 {
                     Amount = shoppingCartItem.Amount,
                     ProductId = shoppingCartItem.Product.ProductId,
-                    Price = shoppingCartItem.Product.Price
+                    Price = shoppingCartItem.Product.Price,
+                    
+
                 };
 
                 order.OrderDetails.Add(OrderDetail);

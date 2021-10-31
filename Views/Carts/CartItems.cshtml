@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EStore.Models.Cart>
+
+@{
+    ViewData["Title"] = "CartItems";
+}
+
+<h1>Cart Items</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ShortDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Category.CategoryName)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ShortDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Category.CategoryName)
+                </td>
+
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.CartId">Remove</a>
+                </td>
+            </tr>
+
+
+
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total Amount</td>
+            <td>  @Global.CartTotal</td>
+        </tr>
+    </tfoot>
+
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="Reservations" asp-action="Create">Check out now!</a>
+</div>
+

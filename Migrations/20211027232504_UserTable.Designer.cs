@@ -4,14 +4,16 @@ using EStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211027232504_UserTable")]
+    partial class UserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,62 +196,6 @@ namespace EStore.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("EStore.Models.Reservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Firstname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Lastname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("ReservationAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("ReservationDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ReservationId");
-
-                    b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("EStore.Models.ReservationDetail", b =>
-                {
-                    b.Property<int>("ReservationDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservationDetailId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ReservationDetails");
-                });
-
             modelBuilder.Entity("EStore.Models.ShoppingCart", b =>
                 {
                     b.Property<string>("ShoppingCartId")
@@ -339,15 +285,6 @@ namespace EStore.Migrations
                     b.HasOne("EStore.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EStore.Models.ReservationDetail", b =>
-                {
-                    b.HasOne("EStore.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

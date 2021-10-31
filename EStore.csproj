@@ -8,10 +8,20 @@
   <ItemGroup>
     <Compile Remove="Migrations\20211025092313_OrderDetails.cs" />
     <Compile Remove="Migrations\20211025092313_OrderDetails.Designer.cs" />
+    <Compile Remove="Migrations\20211027103236_Login2.cs" />
+    <Compile Remove="Migrations\20211027103236_Login2.Designer.cs" />
+    <Compile Remove="Migrations\20211027103831_LoginUser.cs" />
+    <Compile Remove="Migrations\20211027103831_LoginUser.Designer.cs" />
+    <Compile Remove="Migrations\20211027142532_Cart.cs" />
+    <Compile Remove="Migrations\20211027142532_Cart.Designer.cs" />
+    <Compile Remove="Migrations\20211027142654_Cart.cs" />
+    <Compile Remove="Migrations\20211027142654_Cart.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.20" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.20">

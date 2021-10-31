@@ -26,7 +26,7 @@ namespace EStore.Models
 
         [Required(ErrorMessage = "Please enter your address")]
         [StringLength(100)]
-        [Display(Name = "Address Line 1")]
+        [Display(Name = "Address")]
         public string AddressLine1 { get; set; }
 
         [Required(ErrorMessage = "Please enter your city")]

@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<ul class="navbar-nav">
+    @if (Global.CurrentUser != null)
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="CartItems">CartItems</a>
+        </li>
+
+        <li class="nav-item float-right">
+            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">[[Hello @Global.CurrentUser]]</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+        </li>
+
+        if (Global.CurrentUser == "admin@estore.com")
+        {
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+            </li>
+
+        }
+    }
+    else
+    {
+        <li class="nav-item float-right">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Create">Register</a>
+        </li>
+
+        <li class="nav-item float-right">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+        </li>
+    }
+
+</ul>

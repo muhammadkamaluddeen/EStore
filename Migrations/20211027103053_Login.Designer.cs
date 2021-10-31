@@ -4,46 +4,22 @@ using EStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211027103053_Login")]
+    partial class Login
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("EStore.Models.Cart", b =>
-                {
-                    b.Property<int>("CartId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CartNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("isChecked")
-                        .HasColumnType("bit");
-
-                    b.HasKey("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Carts");
-                });
 
             modelBuilder.Entity("EStore.Models.Category", b =>
                 {
@@ -160,9 +136,6 @@ namespace EStore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -187,67 +160,9 @@ namespace EStore.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CartId");
-
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("EStore.Models.Reservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Firstname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Lastname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("ReservationAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("ReservationDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ReservationId");
-
-                    b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("EStore.Models.ReservationDetail", b =>
-                {
-                    b.Property<int>("ReservationDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservationDetailId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ReservationDetails");
                 });
 
             modelBuilder.Entity("EStore.Models.ShoppingCart", b =>
@@ -285,36 +200,6 @@ namespace EStore.Migrations
                     b.ToTable("ShoppingCartItems");
                 });
 
-            modelBuilder.Entity("EStore.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("EStore.Models.Cart", b =>
-                {
-                    b.HasOne("EStore.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("EStore.Models.OrderDetail", b =>
                 {
                     b.HasOne("EStore.Models.Order", "Order")
@@ -332,22 +217,9 @@ namespace EStore.Migrations
 
             modelBuilder.Entity("EStore.Models.Product", b =>
                 {
-                    b.HasOne("EStore.Models.Cart", null)
-                        .WithMany("Products")
-                        .HasForeignKey("CartId");
-
                     b.HasOne("EStore.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EStore.Models.ReservationDetail", b =>
-                {
-                    b.HasOne("EStore.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

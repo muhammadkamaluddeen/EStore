@@ -1,7 +1,9 @@
 using EStore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +37,12 @@ namespace EStore
             services.AddScoped<IOrder, OrderRepo>();
             services.AddHttpContextAccessor();
             services.AddSession();
+            //services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            // {
+            //     options.SignIn.RequireConfirmedAccount = false;
+            // }).AddEntityFrameworkStores<AppDbContext>();
 
+           
             services.AddControllersWithViews();
         }
 
