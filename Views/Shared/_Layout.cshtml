@@ -1,4 +1,6 @@
-﻿ <!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,25 +25,29 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
+
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shopping" asp-action="List">Shopping</a>
-                        </li>
+
+                         @await Component.InvokeAsync("CategoryMenu")
+
+                       
+
+                        @Html.Partial("_LoginPartial")
+
+
+
+
+
                     </ul>
+
+                    
                 </div>
             </div>
         </nav>
@@ -59,14 +65,17 @@
             </div>
 
         </div>
-     
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - E-Store 
-        </div>
-    </footer>
+    </div>
+    <hr />
+    <div class="container" style="text-align:center">
+        &copy; 2021 - E-Store
+        @*<footer class="border-top footer text-muted">
+                <div class="container">
+                    &copy; 2021 - E-Store
+                </div>
+            </footer>*@
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

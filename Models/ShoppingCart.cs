@@ -32,12 +32,19 @@ namespace EStore.Models
 
             session.SetString("CartId", cartId);
 
-            return new ShoppingCart(context) { ShoppingCartId = cartId };
+            return new ShoppingCart(context) { ShoppingCartId = cartId
+            };
         }
 
         public void AddToCart(Product product, int amount)
         {
-            var shoppingCartItem =
+           
+
+
+            
+            //var myShoppingCartId = _appDbContext.ShoppingCart.Add(ShoppingCartId);
+            
+                var shoppingCartItem =
                     _appDbContext.ShoppingCartItems.SingleOrDefault(
                         s => s.Product.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
 
@@ -50,7 +57,8 @@ namespace EStore.Models
                     Amount = 1
                 };
 
-                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+               
+               _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
             }
             else
             {

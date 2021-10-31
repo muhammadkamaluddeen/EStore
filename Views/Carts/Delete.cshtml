@@ -1,0 +1,16 @@
+﻿@model EStore.Models.Cart
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div>  
+       <h3> Sure you want to remove @Html.DisplayFor(model => model.Product.ProductName) from the Cart?</h3>
+    
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CartId" />
+        <input type="submit" value="Yes" class="btn btn-danger" />
+    </form>
+</div>

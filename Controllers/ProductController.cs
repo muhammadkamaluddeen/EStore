@@ -16,7 +16,7 @@ namespace EStore.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
-
+        
         public ProductController(AppDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
