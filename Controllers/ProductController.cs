@@ -62,7 +62,7 @@ namespace EStore.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Create([Bind("ProductId,ProductName,ShortDesc,LongDesc,Price,ImageFile,IsProductOfTheWeek,CategoryId")] Product productModel)
         {
             if (ModelState.IsValid)
@@ -113,7 +113,7 @@ namespace EStore.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ShortDesc,LongDesc,Price,ImagePath,IsProductOfTheWeek,CategoryId")] Product product)
         {
             if (id != product.ProductId)
@@ -166,7 +166,7 @@ namespace EStore.Controllers
 
         // POST: Product/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);

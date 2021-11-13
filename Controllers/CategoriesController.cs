@@ -48,11 +48,9 @@ namespace EStore.Controllers
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public IActionResult Create([Bind("CategoryId,CategoryName,Description,ActiveStatus")] Category category)
         {
             if (ModelState.IsValid)
@@ -83,11 +81,8 @@ namespace EStore.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,Description,ActiveStatus")] Category category)
         {
             if (id != category.CategoryId)
@@ -138,7 +133,7 @@ namespace EStore.Controllers
 
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var category = await _context.Categories.FindAsync(id);
